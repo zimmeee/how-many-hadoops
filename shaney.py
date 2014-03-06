@@ -4,6 +4,7 @@
 #	                       some editing by Joe Strout
 #
 #	search for "Mark V.  Shaney" on the WWW for more info!
+# http://www.yisongyue.com/shaney/
 
 import sys
 import random
@@ -48,12 +49,15 @@ def run(filename=''):
 	  return
 	
 	key = ()
-	count = 10
+	count = 1
 	
+	line = []
+
 	while 1:
 	  if dict.has_key(key):
 	    word = choice(dict[key])
-	    print word,
+	    print word, 
+	    line.append( word )
 	    key = (key[1], word)
 	    if key in end_sentence:
 	      print
@@ -64,6 +68,8 @@ def run(filename=''):
 	  else:
 	    key = choice(end_sentence)
 	
+	return ' '.join( line )
+
 # end of run() function
 
 # immediate-mode commands, for drag-and-drop or execfile() execution

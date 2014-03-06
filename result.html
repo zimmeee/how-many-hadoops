@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
-  <body>
+	<link href="/static/main.css" rel="stylesheet" />
+  	<body>
 
-  You wrote: <br>
-  {{ content }}
+  		That {{ content }} sounds tricky, here's what you're gonna need to do: <br>
+  		{{advice}}
 
-  </body>
+  	</body>
 </html>
 {% endautoescape %}
