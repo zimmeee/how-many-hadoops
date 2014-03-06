@@ -49,7 +49,7 @@ def run(filename=''):
 	  return
 	
 	key = ()
-	count = 1
+	count = 10
 	
 	line = []
 
