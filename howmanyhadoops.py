@@ -29,8 +29,12 @@ class HowMany(webapp2.RequestHandler):
        index = random.randint(0,len(words)-1)
        return words[index]
        
-       
-
+    #   Stolen from: 
+    #   shaney.py              by Greg McFarlane
+    #                          some editing by Joe Strout
+    #
+    #   search for "Mark V.  Shaney" on the WWW for more info!
+    # http://www.yisongyue.com/shaney/
     def run( self, text ):
         words = string.split(text)
         
