@@ -9,6 +9,8 @@ from google.appengine.ext import ndb
 import jinja2
 import webapp2
 
+import logging
+
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -87,6 +89,9 @@ class HowMany(webapp2.RequestHandler):
         text = open(path).readlines()[0]
 
         advice = self.run( text )
+
+        logging.info("PROJECT DESCRIPTION: %s", content)
+        logging.info("ADVICE: %s", advice)
 
     	template_values = {
     	    'content': content,
