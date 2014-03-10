@@ -85,7 +85,7 @@ class HowMany(webapp2.RequestHandler):
     def post(self):
     	content = self.request.get('content')
 
-        path = os.path.join(os.path.split(__file__)[0], 'static/cloudera-blog.txt')
+        path = os.path.join(os.path.split(__file__)[0], 'static/howmanybutts.txt')
         text = open(path).readlines()[0]
 
         advice = self.run( text )
