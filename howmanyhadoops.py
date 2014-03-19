@@ -81,6 +81,15 @@ class HowMany(webapp2.RequestHandler):
             key = self.choice(end_sentence)
         
         return ' '.join( line )
+    
+    def terms(self, content, text):
+      content = content.split(" ")
+      howMany = 0
+      for word in content:
+        if text.find(word) > -1:
+          howMany = howMany + 1
+      return howMany
+
 
     def post(self):
     	content = self.request.get('content')
@@ -89,13 +98,15 @@ class HowMany(webapp2.RequestHandler):
         text = open(path).readlines()[0]
 
         advice = self.run( text )
+        howMany = self.terms( content, text )
 
         logging.info("PROJECT DESCRIPTION: %s", content)
         logging.info("ADVICE: %s", advice)
 
     	template_values = {
     	    'content': content,
-            'advice': advice
+          'advice': advice,
+          'howMany': howMany
     	}
 
     	template = JINJA_ENVIRONMENT.get_template('result.html')
