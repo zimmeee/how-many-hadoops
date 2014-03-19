@@ -83,10 +83,10 @@ class HowMany(webapp2.RequestHandler):
         return ' '.join( line )
     
     def terms(self, content, text):
-      content = content.split(" ")
+      content = content.lower().split(" ")
       howMany = 0
       for word in content:
-        if text.find(word) > -1:
+        if text.lower().find(word) > -1:
           howMany = howMany + 1
       return howMany
 
