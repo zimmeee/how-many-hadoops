@@ -81,7 +81,7 @@ class HowMany(webapp2.RequestHandler):
             key = self.choice(end_sentence)
         
         return ' '.join( line )
-    
+
     def terms(self, content, text):
       content = content.lower().split(" ")
       howMany = 0
@@ -92,25 +92,25 @@ class HowMany(webapp2.RequestHandler):
 
 
     def post(self):
-    	content = self.request.get('content')
+      content = self.request.get('content')
 
-        path = os.path.join(os.path.split(__file__)[0], 'static/howmanybutts.txt')
-        text = open(path).readlines()[0]
+      path = os.path.join(os.path.split(__file__)[0], 'static/howmanybutts.txt')
+      text = open(path).readlines()[0]
 
-        advice = self.run( text )
-        howMany = self.terms( content, text )
+      advice = self.run( text )
+      howMany = self.terms( content, text )
 
-        logging.info("PROJECT DESCRIPTION: %s", content)
-        logging.info("ADVICE: %s", advice)
+      logging.info("PROJECT DESCRIPTION: %s", content)
+      logging.info("ADVICE: %s", advice)
 
-    	template_values = {
-    	    'content': content,
+      template_values = {
+          'content': content,
           'advice': advice,
           'howMany': howMany
-    	}
+      }
 
-    	template = JINJA_ENVIRONMENT.get_template('result.html')
-    	self.response.write(template.render(template_values))
+      template = JINJA_ENVIRONMENT.get_template('result.html')
+      self.response.write(template.render(template_values))
 
 
 application = webapp2.WSGIApplication([
