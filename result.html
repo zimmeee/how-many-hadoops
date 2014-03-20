@@ -4,17 +4,26 @@
 	<link href="/static/main.css" rel="stylesheet" />
   	<body>
   	<div id="result" class="bigbox">
-  		You want to {{ content }}?  Sounds tricky, but here's what we have to say about that: 
-  		<br/><br/>
+  		You want {{ content }}?  
+  		<br/>
+  		<br/>
+			{% if howMany == 1 %}
+  				You should only need one Hadoop for this, pussy.
+  			{% elif howMany > 1 %}
+  				I reckon you'll need at least 
+  				<div>
+  				{{ howMany }} Hadoops 
+  				<div> 
+  				to be that disruptive.
+  			{% else %}
+  				You're not disruptive enough for any Hadoops.  Go home.
+  			{% endif %}
+  		<br/>
+  		<br/>
+  		Here's some things you should consider before getting started:
+  		<div> 
   		{{advice}}
-  		<br/><br/>
-  				{% if howMany == 1 %}
-			You should only need one Hadoop for this, pussy.
-		{% elif howMany > 1 %}
-			I reckon you'll need at least {{ howMany }} Hadoops to be that disruptive.
-		{% else %}
-			You're not disruptive enough for any Hadoops.  Go home.
-		{% endif %}
+  		</div>
 	</div>
   	</body>
 </html>
